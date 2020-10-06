@@ -2,7 +2,32 @@
   "usuarios": [
     {
       "id": 1,
-      "email": "diego@domob.me",
+      "email": "bruno@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 2,
+      "email": "elvia@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 3,
+      "email": "gabriel@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 4,
+      "email": "nei@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 5,
+      "email": "karla@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 6,
+      "email": "nathalia@help.me",
       "password": "123123"
     }
   ],
@@ -10,6 +35,10 @@
     {
       "descricao": "Projeto Final",
       "id": 1
+    },
+    {
+      "descricao": "Projeto React Native",
+      "id": 2
     }
   ],
   "tarefas": [
