@@ -16,16 +16,14 @@ export const  ButtonLogoutText = styled.Text`
     font-size: 16px;
 `;
 
-export const Expandir = styled.Text`
-    background-color: #ccc;
-    margin: 1px;
-    width: 400px;
-    height: 40px;
-    justify-content:center;
-    align-items: center;
+export const Expandir = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+   
 `;
 
-export const AccordionContentArea = styled.View`
-  padding: 20px;
-  ${({ accordionState }) => accordionState && `display: none;`}
+export const Texto = styled.Text`
+    justify-content: space-between;
+    width: 200px;
 `;
+

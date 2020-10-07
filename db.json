@@ -43,7 +43,7 @@
   ],
   "tarefas": [
     {
-      "descricao": "Aprender react",
+      "descricao":"Aprender react",
       "concluido": true,
       "projetoId": 1,
       "usuarioId": 1,
@@ -58,8 +58,22 @@
     },
     {
       "descricao": "Aprender css",
-      "concluido": true,
+      "concluido": false,
       "projetoId": 1,
+      "usuarioId": 1,
+      "id": 3
+    },
+    {
+      "descricao": "Aprender java",
+      "concluido": true,
+      "projetoId": 2,
+      "usuarioId": 1,
+      "id": 3
+    },
+    {
+      "descricao": "Aprender Logica",
+      "concluido": false,
+      "projetoId": 2,
       "usuarioId": 1,
       "id": 3
     }

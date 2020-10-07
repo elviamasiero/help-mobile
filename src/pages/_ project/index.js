@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useAuth } from '../../hooks/auth';
-import { ButtonLogout, ButtonLogoutText } from './styles.js';
+import { ButtonLogout, ButtonLogoutText, Expandir, Texto } from './styles.js';
 import Accordion from "../../components/Accordion";
 import api from '../../services/api'
 
@@ -37,14 +37,30 @@ const project = () => {
     function validarTasks (proj) {
         return tasks.map( task =>{
                if( task.projetoId === proj.id ){
-               return <Text style={{width:20}}> {task.descricao} {task.concluido ? "Concluida" : "Pendente" }</Text> 
+               return <Expandir> 
+                            <Texto> 
+                                {task.descricao}
+                            </Texto> 
+                            <Texto>
+                                {task.concluido ? "Concluida" : "Pendente" } 
+                            </Texto> 
+                    </Expandir>
                }
         })
     }
 
+    async function Delete(proj){
+        try {
+          await api.delete(`projetos/${proj.id}`)
+          console.log("Foi")
+        } catch (error) {
+          console.log(error, "delete error")
+        }
+      }
+
     return (
 
-        <View>
+        <View style={{padding:20}}>
             <ButtonLogout onPress={() => signOut()}>
                 <ButtonLogoutText> Sair </ButtonLogoutText>
             </ButtonLogout>
@@ -56,6 +72,9 @@ const project = () => {
                         key={proj.id}
                         title={proj.descricao}
                         content={validarTasks(proj)}
+                        excluir={<TouchableOpacity onPress={() => Delete(proj)}>
+                            <Text> Deletar</Text>
+                        </TouchableOpacity>}
                     />
                     )
                 })}
