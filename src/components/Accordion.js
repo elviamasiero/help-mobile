@@ -1,4 +1,3 @@
-import { BlockRounded } from "@material-ui/icons";
 import React, { useState, useRef } from "react";
 import {Text, TouchableOpacity, View} from 'react-native'
 
@@ -27,10 +26,12 @@ function Accordion(props) {
       <TouchableOpacity className={`accordion ${setActive}`} onPress={() => toggleAccordion()}>
         <Text className="accordion__title">{props.title}</Text>
       </TouchableOpacity>
-      <View
+      <View style={{
+        flex: 1,  flexWrap: 'wrap', flexDirection: 'column', alignContent: 'space-between'
+      }}
         ref={content} 
         className="accordion__content">
-    	  <Text style={{maxHeight:setHeight}} >{props.content}</Text> 
+    	  <Text><Text style={{maxHeight:setHeight}} >{props.content}</Text></Text> 
       </View>
     </View>
   );
