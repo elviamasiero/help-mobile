@@ -2,6 +2,7 @@
   "usuarios": [
     {
       "id": 1,
+      "nome": "Bruno",
       "email": "bruno@help.me",
       "password": "123123"
     },
@@ -17,6 +18,7 @@
     },
     {
       "id": 4,
+      "nome": "Nei",
       "email": "nei@help.me",
       "password": "123123"
     },
@@ -34,16 +36,23 @@
   "projetos": [
     {
       "descricao": "Projeto Final",
+      "idUsuario": 3,
       "id": 1
     },
     {
       "descricao": "Projeto React Native",
+      "idUsuario": 1,
       "id": 2
+    },
+    {
+      "descricao": "Projeto vamos se ferra bonito ",
+      "idUsuario": 3,
+      "id": 3
     }
   ],
   "tarefas": [
     {
-      "descricao":"Aprender react",
+      "descricao": "Aprender react",
       "concluido": true,
       "projetoId": 1,
       "usuarioId": 1,
@@ -51,31 +60,38 @@
     },
     {
       "descricao": "Aprender react native",
-      "concluido": true,
       "projetoId": 1,
       "usuarioId": 1,
-      "id": 2
+      "id": 2,
+      "concluido": false
     },
     {
       "descricao": "Aprender css",
-      "concluido": false,
       "projetoId": 1,
       "usuarioId": 1,
-      "id": 3
+      "id": 3,
+      "concluido": false
     },
     {
       "descricao": "Aprender java",
-      "concluido": true,
       "projetoId": 2,
       "usuarioId": 1,
-      "id": 3
+      "id": 4,
+      "concluido": false
     },
     {
       "descricao": "Aprender Logica",
-      "concluido": false,
       "projetoId": 2,
       "usuarioId": 1,
-      "id": 3
+      "id": 5,
+      "concluido": false
+    },
+    {
+      "descricao": "Teste",
+      "concluido": false,
+      "projetoId": 1,
+      "usuarioId": 4,
+      "id": 6
     }
   ]
 }

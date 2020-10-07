@@ -7,35 +7,50 @@ import api from '../services/api'
 /*import {Chevron} from './Chevron';*/
 function Accordion(props) {
   const [setActive, setActiveState] = useState("");
-  const [setHeight, setHeightState] = useState(0);
+  const [setHeight, setHeightState] = useState('none');
   const [setRotate, setRotateState] = useState("accordion__icon");
-  
+  const [HeightInput, setHeightInput] = useState('none');
 
   const content = useRef(null);
 
   function toggleAccordion() {
     setActiveState(setActive === "" ? "active" : "");
     setHeightState(
-      setActive === "active" ? 0 : setHeightState(20)
+      setActive === "active" ? 'none' : setHeightState('flex')
     );
     setRotateState(
       setActive === "active" ? "accordion__icon" : "accordion__icon rotate"
     );
   }
 
+  function toggleInput() {
+    setActiveState(setActive === "" ? "active" : "");
+    setHeightInput(
+      setActive === "active" ? 'none' :setHeightInput('flex')
+    );
+  }
  
   /* <Chevron className={`${setRotate}`} width={10} fill={"#777"} /> */
 
   return (
    <View className="accordion__section">
       <ButtomProject className={`accordion ${setActive}`} onPress={() => toggleAccordion()}>
-        {props.excluir}
-        <TitleProject className="accordion__title">{props.title}</TitleProject>
+        {props.excluir} 
+        
+      <TitleProject className="accordion__title">{props.title}</TitleProject>
+      <TouchableOpacity onPress={() => toggleInput()}> 
+          <Text>{props.add}</Text>
+        </TouchableOpacity>
       </ButtomProject>
-      <Text style={{maxHeight:setHeight, backgroundColor:'pink'}}> {props.content}</Text>
+      <View  style={{display:setHeight, backgroundColor:'pink'}}> 
+          {props.content}
+      </View>
       <View style={{justifyContent:'space-between'}}
         ref={content} 
         className="accordion__content">
+      </View>
+      <View style={{display:HeightInput}}> 
+       {props.input}
       </View>
     </View>
   );
