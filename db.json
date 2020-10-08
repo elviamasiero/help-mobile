@@ -8,11 +8,13 @@
     },
     {
       "id": 2,
+      "nome": "Elvia",
       "email": "elvia@help.me",
       "password": "123123"
     },
     {
       "id": 3,
+      "nome": "Gabriel",
       "email": "gabriel@help.me",
       "password": "123123"
     },
@@ -24,11 +26,13 @@
     },
     {
       "id": 5,
+      "nome": "Karla",
       "email": "karla@help.me",
       "password": "123123"
     },
     {
       "id": 6,
+      "nome": "Nathalia",
       "email": "nathalia@help.me",
       "password": "123123"
     }
@@ -43,11 +47,6 @@
       "descricao": "Projeto React Native",
       "idUsuario": 1,
       "id": 2
-    },
-    {
-      "descricao": "Projeto vamos se ferra bonito ",
-      "idUsuario": 3,
-      "id": 3
     }
   ],
   "tarefas": [

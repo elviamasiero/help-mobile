@@ -76,6 +76,7 @@ const project = () => {
 
    useEffect(() =>{
         loadUserAuth();
+        loadTasks();
    },[useFocused || false]);
     function validarTasks (proj) {
         return tasks.map( task =>{
@@ -86,13 +87,12 @@ const project = () => {
                             </Texto> 
                                 {users.map(user => {
                                     if(user.id === task.usuarioId){
-                                        return <Text> {user.nome} </Text> 
+                                        return <Text key={user.id}> {user.nome} </Text> 
                                     }
                                 })}
                             <Texto>
                                 {task.concluido ? "Concluida" : "Pendente" } 
                             </Texto> 
-                            
                     </Expandir>
                 }
             })
@@ -100,7 +100,7 @@ const project = () => {
 
     async function addTasks(proj){
 
-        if(!selectedValue){
+        if(!selectedValue || selectedValue === 0 ){
             return
         }
 
@@ -158,10 +158,10 @@ const project = () => {
                      <Picker
                         selectedValue={selectedValue}
                         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                            <Picker.Item  label="Selecione um usuario"  />
+                            <Picker.Item  label="Selecione um usuario" value={0} />
                         {users.map(user =>{
                             return(
-                                <Picker.Item key={user.id} label={user.email} value={user.id} />
+                                <Picker.Item key={user.id} label={user.nome} value={user.id} />
                             )
                         })}
                     </Picker>
@@ -193,6 +193,17 @@ const project = () => {
         } catch (error) {
           console.log(error, "delete error")
         }
+
+        tasks.map( async (task) =>{
+            if(task.projetoId === proj.id){
+                try {
+                    await api.delete(`tarefas/${task.id}`)
+                } catch (error) {
+                    console.log(error, 'Erro ao deletar a tarefa')
+                }
+            }
+        })
+        
     }
 
     return (
