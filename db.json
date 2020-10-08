@@ -35,6 +35,24 @@
       "nome": "Nathalia",
       "email": "nathalia@help.me",
       "password": "123123"
+    },
+    {
+      "id": 7,
+      "nome": "Daniel",
+      "email": "daniel@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 8,
+      "nome": "Brenin do grau",
+      "email": "BreninDuGrau@help.me",
+      "password": "123123"
+    },
+    {
+      "id": 9,
+      "nome": "ROBERTO ",
+      "email": "roberto@help.me",
+      "password": "123123"
     }
   ],
   "projetos": [
@@ -77,6 +95,27 @@
       "projetoId": 1,
       "usuarioId": 4,
       "id": 6
+    },
+    {
+      "descricao": "Teste",
+      "projetoId": 1,
+      "usuarioId": 3,
+      "id": 7,
+      "concluido": false
+    },
+    {
+      "descricao": "Teste",
+      "projetoId": 1,
+      "usuarioId": 9,
+      "id": 8,
+      "concluido": false
+    },
+    {
+      "descricao": "Roberto estudar php",
+      "concluido": false,
+      "projetoId": 1,
+      "usuarioId": 9,
+      "id": 9
     }
   ]
 }

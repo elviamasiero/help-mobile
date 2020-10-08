@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
     console.log("usuarios", response);
 
     const user = response.data.filter(data => {
-      console.log("data", data.email, email);
+      console.log("data", data.password,  data.nome, password);
       return (data.email === email && data.password === password);
     });
 

@@ -1,17 +1,11 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components/native'
 
 export const Container = styled.View`
-    flex: 1;
     background-color: #f0f0f5;
-    padding: 20px;
     justify-content: center;
-    align-items: center; 
-`;
-
-export const Logo = styled.Image`
-    width: 230px;
-    height: 230px;
-    margin: 20px;
+    align-items:center;
+    padding: 20px;
+    flex:1;
 `;
 
 export const Input = styled.TextInput`
@@ -24,21 +18,20 @@ export const Input = styled.TextInput`
     border-radius: 8px;
     margin-top:10px;
     margin-bottom:10px;
-    text-align:center;
 `;
 
-export const Button = styled.TouchableOpacity`
+export const ButtonInput = styled.TouchableOpacity`
     background-color: red;
     width: 250px;
-    height: 38px;
+    height: 40px;
     justify-content: center;
     align-items:center;
     border-radius: 8px;
-    margin-top: 5px;
-    margin-bottom: 5px; 
+    margin-top:10px;
+    margin-bottom:10px;
 `;
 
-export const ButtonText = styled.Text`
+export const ButtonInputText = styled.Text`
     color: #fff;
     font-size: 18px; 
 `;

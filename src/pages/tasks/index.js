@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 
 
-const tasks = () => {
+const tasks = ({navigation}) => {
     const [tasks, setTasks] = useState([]);
     const [userAuth, setUserAuth] = useState([]);
     const [listTask, setLitsTask] = useState([]);
@@ -66,6 +66,8 @@ const tasks = () => {
             validarTasks();
         }
     }
+
+ 
 
 
     async function deleteTasks(task) {
