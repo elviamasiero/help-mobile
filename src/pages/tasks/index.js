@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
+import { Container, TasksView, TasksIcons, TasksButtons, TasksText, Tasks} from './styles';
 import api from '../../services/api';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -79,38 +80,38 @@ const tasks = () => {
     }
 
     return (
-        <View>
+        <Container>
             {listTask.length === 0 ? (
                 <Text> Você não possui tarefas</Text>
             ) : (
-                    <View>
+                    <Tasks>
                         {listTask.map(task => {
                             return (
-                                <View key={task.id}>
-                                    <Text> {task.descricao}</Text>
+                                <TasksView key={task.id}>
+                                    <TasksText> {task.descricao}</TasksText>
                                     <Text> {task.concluido ? (
-                                        <>
-                                            <TouchableOpacity onPress={() => updateTasks(task)}>
-                                                <Feather name="check-circle" size={36} color="black" />
-                                            </TouchableOpacity>
-                                            <TouchableOpacity onPress={() => deleteTasks(task)}>
-                                                <Feather name="delete" size={36} color="black" />
-                                            </TouchableOpacity>
+                                        <TasksIcons>
+                                            <TasksButtons onPress={() => updateTasks(task)}>
+                                                <Feather name="check-circle" size={24} color="black" />
+                                            </TasksButtons>
+                                            <TasksButtons onPress={() => deleteTasks(task)}>
+                                                <Feather name="delete" size={24} color="black" />
+                                            </TasksButtons>
 
-                                        </>
+                                        </TasksIcons>
                                     ) : (
-                                            <TouchableOpacity onPress={() => updateTasks(task)}>
-                                                <Feather name="circle" size={26} color="black"  />
-                                            </TouchableOpacity>
+                                            <TasksButtons onPress={() => updateTasks(task)}>
+                                                <Feather name="circle" size={24} color="black"  />
+                                            </TasksButtons>
 
                                         )}
                                     </Text>
-                                </View>
+                                </TasksView>
                             )
                         })}
-                    </View>
+                    </Tasks>
                 )}
-        </View>
+        </Container>
     )
 };
 

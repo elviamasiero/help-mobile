@@ -25,8 +25,8 @@ const Login = () =>{
     return(
         <Container>
             <Text> Help !!!!</Text>
-            <Input value={email} onChangeText={text => setEmail(text)}/> 
-            <Input value={password} onChangeText={text => setPassword(text)}/> 
+            <Input placeholder="Email" value={email} onChangeText={text => setEmail(text)}/> 
+            <Input placeholder ="Senha" value={password} onChangeText={text => setPassword(text)}/> 
             <Button onPress={() => handleSubmit()}>
                 <ButtonText> Acessar </ButtonText>
             </Button>
