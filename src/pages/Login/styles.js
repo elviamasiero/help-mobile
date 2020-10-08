@@ -15,7 +15,7 @@ export const Logo = styled.Image`
 `;
 
 export const Input = styled.TextInput`
-    background-color: #fff;
+    background-color: #ffff;
     color: #303030;
     font-size: 18px; 
     width: 250px;
@@ -28,7 +28,7 @@ export const Input = styled.TextInput`
 `;
 
 export const Button = styled.TouchableOpacity`
-    background-color: red;
+    background-color: #F25E28;
     width: 250px;
     height: 38px;
     justify-content: center;

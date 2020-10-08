@@ -22,7 +22,7 @@ const Login = ({navigation}) =>{
 
     return(
         <Container>
-            <Logo source={{uri:"https://i.imgur.com/wv5M5jt.jpg"}} />
+            <Logo source={{uri:"https://imgur.com/sD0VAps.png"}} />
             <Input placeholder = "Email" value={email} onChangeText={text => setEmail(text)}/> 
             <Input placeholder = "Senha" value={password} onChangeText={text => setPassword(text)} secureTextEntry={true}/> 
             <Button onPress={() => handleSubmit()}>
