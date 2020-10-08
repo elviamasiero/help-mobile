@@ -1,16 +1,19 @@
-import React, {useEffect, useState, useCallback} from 'react';
-import {Text, View} from 'react-native';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { Container, TasksView, TasksIcons, TasksButtons, TasksText, Tasks} from './styles';
 import api from '../../services/api';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 
 
-const tasks = () =>{
+const tasks = () => {
     const [tasks, setTasks] = useState([]);
     const [userAuth, setUserAuth] = useState([]);
-    const [notTasks ,setNotTasks] = useState('');
+    const [listTask, setLitsTask] = useState([]);
+    const useFocused = useIsFocused();
 
-    const loadTasks = async () =>{
+    const loadTasks = async () => {
         try {
             const response = await api.get('tarefas')
             setTasks(response.data)
@@ -19,75 +22,96 @@ const tasks = () =>{
         }
     }
 
-    const loadUserAuth = async () =>{
+    const loadUserAuth = async () => {
         try {
-            const user = JSON.parse( await AsyncStorage.getItem('@HELP:user'));
+            const user = JSON.parse(await AsyncStorage.getItem('@HELP:user'));
             setUserAuth(user)
         } catch (error) {
             console.log("Erro ao carregar o usuario", error)
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         loadTasks();
         loadUserAuth();
-    },[])
+        validarTasks()
+    }, []);
 
-    
+    useEffect(() => {
+        loadTasks();
+        validarTasks();
+    }, [useFocused ]);
 
-    const updateTasks = useCallback(
-        async (task) => {
+    function validarTasks() {
+        let colletionTasks = [];
+        tasks.map(task => {
+            if (task.usuarioId === userAuth.id) {
+                colletionTasks.push(task)
+            }
+        })
+        setLitsTask(colletionTasks)
+    }
+    async function updateTasks(task) {
+
         const params = {
             ...task,
             concluido: !task.concluido
-          }
-         try {
+        }
+        try {
             await api.put(`tarefas/${task.id}`, params);
+        } catch (error) {
+            console.log('Erro ao atualizar a tarefa', error)
+        }finally{
             loadTasks();
-         } catch (error) {
-             console.log('Erro ao atualizar a tarefa', error)
-         }
-        },[loadTasks],
-      );
-
-      async function deleteTasks(task){
-          try {
-              await api.delete(`tarefas/${task.id}`)
-              loadTasks();
-          } catch (error) {
-              console.log("Erro ao deletar a tarefa", error)
-          }
-      }
-
-
-    function listTasks(){
-       return tasks.map( task =>{
-            if(task.usuarioId === userAuth.id){
-                return (
-                    <View key={task.id}> 
-                        <Text> {task.descricao}</Text> 
-                        <Text> {task.concluido ? (
-                                <>
-                                    <Feather name="check-circle" size={36} color="black" onPress={() => updateTasks(task)} />
-                                    <Feather name="delete" size={36} color="black" onPress={() => deleteTasks(task)} />
-                                </>
-                            ): (
-                                    <Feather name="circle" size={36} color="black" onPress={() => updateTasks(task)}/>
-                            )} 
-                        </Text>
-                    </View>
-                 )    
-            }
-        }) 
-         
+            validarTasks();
+        }
     }
 
 
-                            
+    async function deleteTasks(task) {
+        try {
+            await api.delete(`tarefas/${task.id}`)
+        } catch (error) {
+            console.log("Erro ao deletar a tarefa", error)
+        }finally{
+            loadTasks();
+            validarTasks();
+        }
+    }
+
     return (
-        <View>
-            {listTasks()}
-        </View>
+        <Container>
+            {listTask.length === 0 ? (
+                <Text> Você não possui tarefas</Text>
+            ) : (
+                    <Tasks>
+                        {listTask.map(task => {
+                            return (
+                                <TasksView key={task.id}>
+                                    <TasksText> {task.descricao}</TasksText>
+                                    <Text> {task.concluido ? (
+                                        <TasksIcons>
+                                            <TasksButtons onPress={() => updateTasks(task)}>
+                                                <Feather name="check-circle" size={24} color="black" />
+                                            </TasksButtons>
+                                            <TasksButtons onPress={() => deleteTasks(task)}>
+                                                <Feather name="delete" size={24} color="black" />
+                                            </TasksButtons>
+
+                                        </TasksIcons>
+                                    ) : (
+                                            <TasksButtons onPress={() => updateTasks(task)}>
+                                                <Feather name="circle" size={24} color="black"  />
+                                            </TasksButtons>
+
+                                        )}
+                                    </Text>
+                                </TasksView>
+                            )
+                        })}
+                    </Tasks>
+                )}
+        </Container>
     )
 };
 
