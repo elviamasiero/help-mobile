@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
 import {View, Text, TouchableOpacity, ViewPagerAndroid} from 'react-native';
-import { Container, Input, Button, ButtonText} from './styles';
+import { Container, Input, Button, ButtonText, Logo} from './styles';
 import {useAuth} from '../../hooks/auth';
 import api from '../../services/api';
+
 
 const Login = () =>{
     var {signIn} = useAuth();
@@ -24,9 +25,12 @@ const Login = () =>{
 
     return(
         <Container>
-            <Text> Help !!!!</Text>
-            <Input placeholder="Email" value={email} onChangeText={text => setEmail(text)}/> 
-            <Input placeholder ="Senha" value={password} onChangeText={text => setPassword(text)}/> 
+
+            <Logo source={{uri:"https://i.imgur.com/wv5M5jt.jpg"}} />
+            <Input placeholder = "Email" value={email} onChangeText={text => setEmail(text)}/> 
+            <Input placeholder = "Senha" value={password} onChangeText={text => setPassword(text)}/> 
+
+          
             <Button onPress={() => handleSubmit()}>
                 <ButtonText> Acessar </ButtonText>
             </Button>
