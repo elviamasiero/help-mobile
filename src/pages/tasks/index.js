@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {Text, View} from 'react-native';
+import { Icons } from './styles';
 import api from '../../services/api';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -67,10 +68,10 @@ const tasks = () =>{
                     <View key={task.id}> 
                         <Text> {task.descricao}</Text> 
                         <Text> {task.concluido ? (
-                                <>
+                                <Icons>
                                     <Feather name="check-circle" size={36} color="black" onPress={() => updateTasks(task)} />
                                     <Feather name="delete" size={36} color="black" onPress={() => deleteTasks(task)} />
-                                </>
+                                </Icons>
                             ): (
                                     <Feather name="circle" size={36} color="black" onPress={() => updateTasks(task)}/>
                             )} 
